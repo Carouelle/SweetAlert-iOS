@@ -4,6 +4,9 @@ Sweet Alert iOS
 Beautiful Animated custom Alert View inspired from javascript library [SweetAlert](http://tristanedwards.me/sweetalert).
 Written in Swift this SweetAlertView can be used in Swift and Objective-C projects. SweetAlertView provides live intuitive experience to user actions.It can be used in place of `UIAlertView` and `UIAlertController`
 
+# This fork's only goal is to provide Objective-C support
+This was done by changing the `Alert Style` to an `Int` enumeration, and by asking for the `customImage` argument everywhere the `style` argument is needed, although it can be `null` and won't be user unless the style `customImage` is used.
+
 ### ScreenShots
 ![SweetAlert](https://github.com/codestergit/SweetAlert-iOS/blob/master/SweetAlertiOS.gif)
 

@@ -198,26 +198,25 @@ import QuartzCore
         return self
     }
 
-    @objc open func showAlert(_ title: String, subTitle: String?, style: AlertStyle, customImage: String) -> SweetAlert {
+    @objc open func showAlert(_ title: String, subTitle: String?, style: AlertStyle, customImage: String?) -> SweetAlert {
         _ = showAlert(title, subTitle: subTitle, style: style, customImage: customImage, buttonTitle: "OK")
         return self
-
     }
 
-    @objc open func showAlert(_ title: String, subTitle: String?, style: AlertStyle, customImage: String, buttonTitle: String, action: ((_ isOtherButton: Bool) -> Void)? = nil) -> SweetAlert {
+    @objc open func showAlert(_ title: String, subTitle: String?, style: AlertStyle, customImage: String?, buttonTitle: String, action: ((_ isOtherButton: Bool) -> Void)? = nil) -> SweetAlert {
         _ = showAlert(title, subTitle: subTitle, style: style, customImage: customImage, buttonTitle: buttonTitle, buttonColor: UIColor.colorFromRGB(0xAEDEF4))
         userAction = action
         return self
     }
 
-    @objc open func showAlert(_ title: String, subTitle: String?, style: AlertStyle, customImage: String, buttonTitle: String, buttonColor: UIColor, action: ((_ isOtherButton: Bool) -> Void)? = nil) -> SweetAlert {
+    @objc open func showAlert(_ title: String, subTitle: String?, style: AlertStyle, customImage: String?, buttonTitle: String, buttonColor: UIColor, action: ((_ isOtherButton: Bool) -> Void)? = nil) -> SweetAlert {
         _ = showAlert(title, subTitle: subTitle, style: style, customImage: customImage, buttonTitle: buttonTitle, buttonColor: buttonColor, otherButtonTitle:
         nil)
         userAction = action
         return self
     }
 
-    @objc open func showAlert(_ title: String, subTitle: String?, style: AlertStyle, customImage: String, buttonTitle: String, buttonColor: UIColor, otherButtonTitle:
+    @objc open func showAlert(_ title: String, subTitle: String?, style: AlertStyle, customImage: String?, buttonTitle: String, buttonColor: UIColor, otherButtonTitle:
             String?, action: ((_ isOtherButton: Bool) -> Void)? = nil) -> SweetAlert {
         self.showAlert(title, subTitle: subTitle, style: style, customImage: customImage, buttonTitle: buttonTitle, buttonColor: buttonColor, otherButtonTitle:
         otherButtonTitle, otherButtonColor: UIColor.red)
@@ -225,7 +224,7 @@ import QuartzCore
         return self
     }
 
-    @objc open func showAlert(_ title: String, subTitle: String?, style: AlertStyle, customImage: String, buttonTitle: String, buttonColor: UIColor, otherButtonTitle:
+    @objc open func showAlert(_ title: String, subTitle: String?, style: AlertStyle, customImage: String?, buttonTitle: String, buttonColor: UIColor, otherButtonTitle:
             String?, otherButtonColor: UIColor?, action: ((_ isOtherButton: Bool) -> Void)? = nil) {
         userAction = action
         let window: UIWindow = UIApplication.shared.keyWindow!
@@ -247,9 +246,11 @@ import QuartzCore
             self.animatedView = InfoAnimatedView()
 
         case .customImage:
-            if (!customImage.isEqual("")) {
-                if let image = UIImage(named: customImage) {
-                    self.imageView = UIImageView(image: image)
+            if let customImage = customImage {
+                if (!customImage.isEqual("")) {
+                    if let image = UIImage(named: customImage) {
+                        self.imageView = UIImageView(image: image)
+                    }
                 }
             }
         case .none:
